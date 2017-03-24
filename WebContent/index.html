@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Howdy Parkner!</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<style type="text/css">
+		label {
+			color: #B4886B;
+			font-weight: bold !important;
+		}
+	</style>
+</head>
+<body>
+
+<!-- Start Login Page -->
+<div data-role="page" id="loginPage">
+	<div data-role="content">
+		<br/>
+		<div style="text-align: center; margin: 0 auto;">
+			<img src="./images/parkner_logo.png">
+		</div>
+		<br/>
+        <label for="login_email"><strong>Email: <span>*</span></strong></label>
+		<input type="email" name="login_email" id="login_email" placeholder="Email">
+		<label for="login_pw"><strong>Password: <span>*</span></strong></label>
+		<input type="password" name="login_pw" id="login_pw" placeholder="Password">
+		<br/>
+		<div class="ui-input-btn ui-btn ui-corner-all">
+        	Login
+        	<input id="loginBtn" type="button" data-enhanced="true" value="Enhanced">
+    	</div>
+    	<div class="ui-input-btn ui-btn ui-corner-all">
+        	Sign Up
+        	<input id="signUpBtn" type="button" data-enhanced="true" value="Enhanced">
+    	</div>
+    	</span></a>
+    </div>	
+</div>
+<!-- End Login Page -->
+
+<!-- Start SignUp Page -->
+<div data-role="page" id="signUpPage">
+	<div data-role="header" data-position="fixed" data-add-back-btn="true">
+		<h1>Sign Up</h1>
+		<button id="btnRegister" class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-carat-r">Register</button>
+	</div>
+	<div data-role="main" class="ui-content">  
+		<form method="post" action="#employeeListPage" data-ajax="false">
+			<label for="reg_name"><strong>Name: <span>*</span></strong></label>
+			<input type="text" name="reg_name" id="reg_name" placeholder="Name">
+			<label for="reg_email">Email: <span>*</span></label>
+			<input type="email" id="reg_email" name="reg_email" placeholder="Email"/>   
+			<label for="reg_eid">Employee ID: </label>
+			<input type="number" id="reg_eid" name="reg_eid" placeholder="Employee ID"/>
+			<br/>
+			
+			<div>
+				<label for="reg_pw1">Password : <span>*</span></label>
+				<input type="password" id="reg_pw1" name="reg_pw1" placeholder="Password"/>
+				<input type="password" id="reg_pw2" name="reg_pw2" placeholder="Re-type Password"/>
+				<span id="strength_human"></span>
+			</div>
+			<br/>
+			
+    		<input type="checkbox" name="assignedParkSpaceCheckbox" id="assignedParkSpaceCheckbox">
+    		<label for="assignedParkSpaceCheckbox">I have a company-assigned parking space.</label>	
+			
+			<div id="assignedParkingSpace" style="display: none;">
+				<label for="reg_bldg" class="select">Bldg. <span>*</span></label>
+				<select name="reg_bldg" id="reg_bldg">
+					<option value="">--Select--</option>
+					<option value="pbcom">PBCom Tower</option>
+					<option value="gateway">Gateway</option>
+					<option value="paragon">Paragon</option>
+					<option value="ihub">iHub</option>
+				</select>
+				<label for="reg_flrNo">Floor/Basement No: <span>*</span></label>
+				<input type="text" id="reg_flrNo" name="reg_flrNo" placeholder="Floor/Basement No"/>
+				<label for="reg_parkSlotNo">Parking Slot No: <span>*</span></label>
+				<input type="text" id="reg_parkSlotNo" name="reg_parkSlotNo" placeholder="Parking Slot No"/>
+			</div>	  
+		</form>
+	</div>
+</div>
+<!-- End SignUp Page -->
+
+<!-- Start Hitching Rails -->
+<div data-role="page" id="employeeListPage">
+	<div data-role="header" data-position="fixed">
+		<h1>Hitching Rails</h1>
+		<a href="#left-panel" data-theme="d" data-icon="gear" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc">Open left panel</a>
+	</div>
+	
+	<div data-role="content">
+         <ul id="employeeList" data-role="listview" data-filter="true"></ul>
+    </div>
+    <div data-role="panel" id="left-panel" data-theme="a">
+    	<ul data-role="listview">
+    	   	<li>
+    			<span id="profileName" style="font-weight: bold;">
+    				&nbsp;
+    			</span>
+    		</li>
+    		<li>
+    			<a href="#" data-rel="close">
+    				<h4>Profile</h4>
+    			</a>
+    		</li>
+    		<li>
+    			<a href="#" data-rel="close">
+    				<h4>Bounty Rewards</h4>
+    			</a>
+    		</li>
+    		<li>
+    			<a href="#" data-rel="close">
+    				<h5>Hitching Rails</h5>
+    			</a>
+    		</li>
+    		<li>
+    			<a href="#" data-rel="close" id="exitSaloonLink">
+    				<h5>Exit Saloon</h5>
+    			</a>
+    		</li>
+    	</ul>
+    </div>	
+</div>
+<!-- End Hitching Rails -->
+
+<div data-role="page" id="detailsPage">
+	<div data-role="header" data-add-back-btn="true">
+		<h1>Employee Detailsxxxx</h1>
+		
+	</div>
+
+  <div data-role="content"> 
+
+  	<img id="employeePic"/>
+	<div id="employeeDetails">
+       <h3 id="fullName"></h3>
+       <p id="employeeTitle"></p>
+       <p id="city"></p>
+   	</div>
+	 
+    <ul id="actionList" data-role="listview" data-inset="true"></ul>
+
+  </div>
+</div>
+
+
+<!-- Dialog only page -->
+<div data-role="dialog" id="errorDialog">
+  <div data-role="header">
+    <h1>Error</h1>
+  </div>
+  <div data-role="content">
+    <p><span id="errorMsg"></span></p>
+  </div>
+</div>
+        
+<!--       
+<div id="employeeListPage" data-role="page" >
+
+	<div data-role="header" data-position="fixed">
+		<h1>Employee Directory</h1>
+	</div>
+
+	<div data-role="content">
+         <ul id="employeeList" data-role="listview" data-filter="true"></ul>
+    </div>		
+
+</div>
+  --> 
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+<script src="js/employeelist.js"></script>
+<script src="js/employeedetails.js"></script>
+<script src="js/reportlist.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+</html>
